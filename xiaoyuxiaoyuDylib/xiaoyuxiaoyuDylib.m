@@ -202,13 +202,211 @@ CHConstructor{
     CHLoadLateClass(NetServiceResponseDispatch);
     CHClassHook0(NetServiceResponseDispatch, handlerMap);
 }
+/////////////////////////////NetServiceInterfaceCopy/////////////////////////////////////
 
+#pragma mark - 拷贝关键词
+CHDeclareClass(NetServiceInterfaceCopy)
+CHOptimizedClassMethod1(self, id, NetServiceInterfaceCopy, getResponseToRequest,id,arg1){
+    id  obj =  CHSuper1(NetServiceInterfaceCopy, getResponseToRequest,arg1);
+    id conten = [obj valueForKeyPath:@"content"];
+    id queryDictionary = [arg1 valueForKeyPath:@"queryDictionary"];
+    NSLog(@"NetServiceInterfaceCopy=======%@",obj);
+    NSLog(@"queryDictionary=======%@",queryDictionary);
+
+    return obj;
+}
+
+CHConstructor{
+    CHLoadLateClass(NetServiceInterfaceCopy);
+    CHClassHook1(NetServiceInterfaceCopy, getResponseToRequest);
+}
+/////////////////////////////NetServiceInterfacePing/////////////////////////////////////
+
+#pragma mark - ping
+CHDeclareClass(NetServiceInterfacePing)
+CHOptimizedClassMethod1(self, id, NetServiceInterfacePing, getResponseToRequest,id,arg1){
+    id  obj =  CHSuper1(NetServiceInterfacePing, getResponseToRequest,arg1);
+    id conten = [obj valueForKeyPath:@"content"];
+    NSLog(@"NetServiceInterfacePing=======%@",obj);
+    return obj;
+}
+
+CHConstructor{
+    CHLoadLateClass(NetServiceInterfacePing);
+    CHClassHook1(NetServiceInterfacePing, getResponseToRequest);
+}
+
+/////////////////////////////NetServiceInterfaceApply/////////////////////////////////////
+
+#pragma mark -  申请任务
+/*
+ {
+ "return_code" = 200;
+ "return_data" =     {
+ "ad_type" = 1;
+ "bundle_id" = "com.xx2r45s.jogxhxg";
+ expire = 1537242004;
+ keyword = "\U8d64\U6708\U9738\U4e1a";
+ logo = "http://xyimg.xy599.com/pub_258351_1537239266_8857376.jpg";
+ rank = 1;
+ "short_link" = "https://itunes.apple.com/cn/app/id1418429074";
+ title = "\U8d64\U6708\U9738\U4e1a";
+ "try_play" = 180;
+ };
+ "return_msg" = SUCCESS;
+ }
+ */
+CHDeclareClass(NetServiceInterfaceApply)
+CHOptimizedClassMethod1(self, id, NetServiceInterfaceApply, getResponseToRequest,id,arg1){
+    
+    [[NSUserDefaults standardUserDefaults] setObject:@"apple" forKey:@"1"];
+    [[NSUserDefaults standardUserDefaults] synchronize];
+    
+    id  obj =  CHSuper1(NetServiceInterfaceApply, getResponseToRequest,arg1);
+    id conten = [obj valueForKeyPath:@"content"];
+    NSLog(@"NetServiceInterfaceApply=======%@",obj);
+
+    return obj;
+}
+
+CHConstructor{
+    CHLoadLateClass(NetServiceInterfaceApply);
+    CHClassHook1(NetServiceInterfaceApply, getResponseToRequest);
+}
+/////////////////////////////NetServiceInterfaceApply/////////////////////////////////////
+
+#pragma mark -  打开
+/*
+ {
+ msg = "APP\U672a\U5b89\U88c5"; 未安装
+ result = 3001;
+ }
+ */
+CHDeclareClass(NetServiceInterfaceOpenApp)
+CHOptimizedClassMethod1(self, id, NetServiceInterfaceOpenApp, getResponseToRequest,id,arg1){
+    [[NSUserDefaults standardUserDefaults] setObject:@"open" forKey:@"1"];
+    [[NSUserDefaults standardUserDefaults] synchronize];
+    id  obj =  CHSuper1(NetServiceInterfaceOpenApp, getResponseToRequest,arg1);
+    NSDictionary *conten = [obj valueForKeyPath:@"content"];
+    NSLog(@"NetServiceInterfaceOpenApp=======%@",obj);
+    return obj;
+}
+
+CHConstructor{
+    CHLoadLateClass(NetServiceInterfaceOpenApp);
+    CHClassHook1(NetServiceInterfaceOpenApp, getResponseToRequest);
+}
+
+#pragma mark -  信息
+/*
+ {
+ {
+ bundleId = "com.xiaoyu.qian";
+ "ios_version" = "9.3.2";
+ msg = "\U6210\U529f";
+ "now_idfa" = "34392D94-56FD-4C04-997B-697C3736CBEF";
+ result = 200;
+ version = "9.2.6";
+ }
+ */
+CHDeclareClass(NetServiceInterfaceInfo)
+CHOptimizedClassMethod1(self, id, NetServiceInterfaceInfo, getResponseToRequest,id,arg1){
+    id  obj =  CHSuper1(NetServiceInterfaceInfo, getResponseToRequest,arg1);
+    NSDictionary *conten = [obj valueForKeyPath:@"content"];
+    NSLog(@"NetServiceInterfaceInfo=======%@",obj);
+    return obj;
+}
+
+CHConstructor{
+    CHLoadLateClass(NetServiceInterfaceInfo);
+    CHClassHook1(NetServiceInterfaceInfo, getResponseToRequest);
+}
+
+
+CHDeclareClass(NetServiceInterfaceStartTask)
+CHOptimizedClassMethod1(self, id, NetServiceInterfaceStartTask, getResponseToRequest,id,arg1){
+    id  obj =  CHSuper1(NetServiceInterfaceStartTask, getResponseToRequest,arg1);
+    NSDictionary *conten = [obj valueForKeyPath:@"content"];
+    NSLog(@"NetServiceInterfaceStartTask=======%@",obj);
+    return obj;
+}
+
+CHConstructor{
+    CHLoadLateClass(NetServiceInterfaceStartTask);
+    CHClassHook1(NetServiceInterfaceStartTask, getResponseToRequest);
+}
+
+CHDeclareClass(HTTPSRequest)
+CHOptimizedClassMethod1(self, id, HTTPSRequest, queryDictionaryOfURL,id,arg1){
+    id  obj =  CHSuper1(HTTPSRequest, queryDictionaryOfURL,arg1);
+    NSLog(@"HTTPSRequest=======%@",obj);
+    return obj;
+}
+
+CHConstructor{
+    CHLoadLateClass(HTTPSRequest);
+    CHClassHook1(HTTPSRequest, queryDictionaryOfURL);
+}
+
+/*
+ {
+ callback = "jQuery33001451563856098801_1537255085855";
+ xyurl = "https://www.xiaoyuzhuanqian.com/api/auth/list";
+ }
+ */
+CHDeclareClass(NetServiceInterfaceURL)
+CHOptimizedClassMethod1(self, id, NetServiceInterfaceURL, getResponseToRequest,id,arg1){
+    id  obj =  CHSuper1(NetServiceInterfaceURL, getResponseToRequest,arg1);
+    NSData *conten = [obj valueForKeyPath:@"content"];
+    NSLog(@"NetServiceInterfaceURL=======%@",obj);
+    return obj;
+}
+
+CHConstructor{
+    CHLoadLateClass(NetServiceInterfaceURL);
+    CHClassHook1(NetServiceInterfaceURL, getResponseToRequest);
+}
+
+CHDeclareClass(TaskManager)
+CHOptimizedClassMethod1(self, void, TaskManager, taskComplete,id,arg1){
+    CHSuper1(TaskManager, taskComplete,arg1);
+    NSLog(@"taskComplete=======");
+}
+
+CHOptimizedClassMethod0(self, void, TaskManager, succeedInOpeningApp){
+    CHSuper0(TaskManager, succeedInOpeningApp);
+    NSLog(@"succeedInOpeningApp=======");
+}
+
+
+CHConstructor{
+    CHLoadLateClass(TaskManager);
+    CHClassHook1(TaskManager, taskComplete);
+    CHClassHook0(TaskManager, succeedInOpeningApp);
+
+}
+
+
+
+
+//////////////////////////////LSAW_model////////////////////////////////////
+
+
+#pragma mark - LSAW_model
+CHDeclareClass(LSAW_model)
+CHOptimizedMethod1(self, BOOL, LSAW_model, openAppWithIdentifier,id ,arg1){
+    
+    return   CHSuper1(LSAW_model,openAppWithIdentifier,arg1);
+
+}
+CHConstructor{
+    CHLoadLateClass(LSAW_model);
+    CHClassHook1(LSAW_model,openAppWithIdentifier);
+}
 
 //////////////////////////////HTTPSServer////////////////////////////////////
 #pragma mark - HTTPSServer
-
 CHDeclareClass(HTTPSServer)
-
 CHOptimizedMethod2(self, void, HTTPSServer, responseToStream,id ,arg1,requestData,id,arg2){
     CHSuper2(HTTPSServer, responseToStream,arg1,requestData,arg2);
     NSLog(@"HTTPSServer>>>>>>>>>>>>responseToStream:%@>>>>>>>>>>>requestData:%@",arg1,arg2);
