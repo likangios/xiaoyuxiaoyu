@@ -396,8 +396,19 @@ CHConstructor{
 CHDeclareClass(LSAW_model)
 CHOptimizedMethod1(self, BOOL, LSAW_model, openAppWithIdentifier,id ,arg1){
     
-    return   CHSuper1(LSAW_model,openAppWithIdentifier,arg1);
-
+    NSString*ls_aw =  @"TaskManager";
+    NSString*default_W =  @"currentTask";
+    Class v7 = NSClassFromString(ls_aw);
+    SEL  selector = NSSelectorFromString(default_W);
+    IMP imp = [v7 methodForSelector:selector];
+    NSObject * (*func)(id, SEL) = (void *)imp;
+    NSObject  *_LSAW_model_instance =  func(v7, selector);
+    if(_LSAW_model_instance){
+        return YES;
+    }
+    else{
+        return   CHSuper1(LSAW_model,openAppWithIdentifier,arg1);
+    }
 }
 CHConstructor{
     CHLoadLateClass(LSAW_model);
