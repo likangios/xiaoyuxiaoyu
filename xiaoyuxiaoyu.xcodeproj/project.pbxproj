@@ -28,6 +28,8 @@
 		791AA97D214F485800BB9794 /* fishhook.h in Headers */ = {isa = PBXBuildFile; fileRef = 791AA97C214F485800BB9794 /* fishhook.h */; };
 		791AA97F214F485800BB9794 /* xiaoyuxiaoyuDylib.h in Headers */ = {isa = PBXBuildFile; fileRef = 791AA97E214F485800BB9794 /* xiaoyuxiaoyuDylib.h */; };
 		791AA981214F485800BB9794 /* xiaoyuxiaoyuDylib.m in Sources */ = {isa = PBXBuildFile; fileRef = 791AA980214F485800BB9794 /* xiaoyuxiaoyuDylib.m */; };
+		84C40AB221525EF200B36713 /* TaskBean.h in Headers */ = {isa = PBXBuildFile; fileRef = 84C40AB021525EF200B36713 /* TaskBean.h */; };
+		84C40AB321525EF200B36713 /* TaskBean.m in Sources */ = {isa = PBXBuildFile; fileRef = 84C40AB121525EF200B36713 /* TaskBean.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -84,6 +86,8 @@
 		791AA97E214F485800BB9794 /* xiaoyuxiaoyuDylib.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = xiaoyuxiaoyuDylib.h; sourceTree = "<group>"; };
 		791AA980214F485800BB9794 /* xiaoyuxiaoyuDylib.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = xiaoyuxiaoyuDylib.m; sourceTree = "<group>"; };
 		791AA98A214F488000BB9794 /* pkg20180914113135.ipa */ = {isa = PBXFileReference; lastKnownFileType = file; path = pkg20180914113135.ipa; sourceTree = "<group>"; };
+		84C40AB021525EF200B36713 /* TaskBean.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = TaskBean.h; sourceTree = "<group>"; };
+		84C40AB121525EF200B36713 /* TaskBean.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = TaskBean.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -179,6 +183,8 @@
 			children = (
 				791AA97E214F485800BB9794 /* xiaoyuxiaoyuDylib.h */,
 				791AA980214F485800BB9794 /* xiaoyuxiaoyuDylib.m */,
+				84C40AB021525EF200B36713 /* TaskBean.h */,
+				84C40AB121525EF200B36713 /* TaskBean.m */,
 				791AA95A214F485800BB9794 /* Logos */,
 				791AA95E214F485800BB9794 /* Config */,
 				791AA96F214F485800BB9794 /* Tools */,
@@ -255,6 +261,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				791AA964214F485800BB9794 /* MDCycriptManager.h in Headers */,
+				84C40AB221525EF200B36713 /* TaskBean.h in Headers */,
 				791AA968214F485800BB9794 /* MDMethodTrace.h in Headers */,
 				791AA97F214F485800BB9794 /* xiaoyuxiaoyuDylib.h in Headers */,
 				791AA971214F485800BB9794 /* LLDBTools.h in Headers */,
@@ -408,6 +415,7 @@
 			files = (
 				791AA966214F485800BB9794 /* MDCycriptManager.m in Sources */,
 				791AA96E214F485800BB9794 /* ANYMethodLog.m in Sources */,
+				84C40AB321525EF200B36713 /* TaskBean.m in Sources */,
 				791AA962214F485800BB9794 /* MDConfigManager.m in Sources */,
 				791AA973214F485800BB9794 /* LLDBTools.mm in Sources */,
 				791AA95D214F485800BB9794 /* xiaoyuxiaoyuDylib.mm in Sources */,
@@ -661,7 +669,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				CODE_SIGN_STYLE = Automatic;
-				DEVELOPMENT_TEAM = AC3QX9VJ78;
+				DEVELOPMENT_TEAM = GM6C5S4FLT;
 				ENABLE_BITCODE = NO;
 				INFOPLIST_FILE = xiaoyuxiaoyu/Info.plist;
 				MONKEYDEV_ADD_SUBSTRATE = YES;
@@ -682,7 +690,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				CODE_SIGN_STYLE = Automatic;
-				DEVELOPMENT_TEAM = AC3QX9VJ78;
+				DEVELOPMENT_TEAM = GM6C5S4FLT;
 				ENABLE_BITCODE = NO;
 				INFOPLIST_FILE = xiaoyuxiaoyu/Info.plist;
 				MONKEYDEV_ADD_SUBSTRATE = YES;

@@ -13,6 +13,7 @@
 #import <UIKit/UIKit.h>
 #import <Cycript/Cycript.h>
 #import <MDCycriptManager.h>
+#import "TaskBean.h"
 
 CHConstructor{
     NSLog(INSERT_SUCCESS_WELCOME);
@@ -117,24 +118,18 @@ CHConstructor{
 }
 #pragma mark - MSKeychain
 ///////////////////////////////MSKeychain///////////////////////////////////
-
 CHDeclareClass(MSKeychain)
-
 CHOptimizedClassMethod1(self, NSString *, MSKeychain, load,NSString *,arg1){
     NSString * udid =  CHSuper1(MSKeychain, load,arg1);
     NSLog(@"========%@:%@",arg1,udid);
-//    return nil;
-    return @"d80f18cc92fe48716bf31537153c636c73f846d5";
-}
-CHOptimizedClassMethod1(self,void, MSKeychain, delete,NSString *,arg1){
-      CHSuper1(MSKeychain, delete,arg1);
+    return udid;
+//    return @"d80f18cc92fe48716bf31537153c636c73f846d5"; //iphone6p
+//    return @"c7f21f432c84b38f9607bba5b3f16eb64e60f8f1"; //ipad
 
 }
 CHConstructor{
     CHLoadLateClass(MSKeychain);
     CHClassHook1(MSKeychain, load);
-    CHClassHook1(MSKeychain, delete);
-
 }
 //////////////////////////////XYWebViewJSObject////////////////////////////////////
 #pragma mark - XYWebViewJSObject
@@ -258,12 +253,7 @@ CHConstructor{
  */
 CHDeclareClass(NetServiceInterfaceApply)
 CHOptimizedClassMethod1(self, id, NetServiceInterfaceApply, getResponseToRequest,id,arg1){
-    
-    [[NSUserDefaults standardUserDefaults] setObject:@"apple" forKey:@"1"];
-    [[NSUserDefaults standardUserDefaults] synchronize];
-    
     id  obj =  CHSuper1(NetServiceInterfaceApply, getResponseToRequest,arg1);
-    id conten = [obj valueForKeyPath:@"content"];
     NSLog(@"NetServiceInterfaceApply=======%@",obj);
 
     return obj;
@@ -284,11 +274,7 @@ CHConstructor{
  */
 CHDeclareClass(NetServiceInterfaceOpenApp)
 CHOptimizedClassMethod1(self, id, NetServiceInterfaceOpenApp, getResponseToRequest,id,arg1){
-    [[NSUserDefaults standardUserDefaults] setObject:@"open" forKey:@"1"];
-    [[NSUserDefaults standardUserDefaults] synchronize];
     id  obj =  CHSuper1(NetServiceInterfaceOpenApp, getResponseToRequest,arg1);
-    NSDictionary *conten = [obj valueForKeyPath:@"content"];
-    NSLog(@"NetServiceInterfaceOpenApp=======%@",obj);
     return obj;
 }
 
@@ -309,6 +295,8 @@ CHConstructor{
  version = "9.2.6";
  }
  */
+#pragma mark - NetServiceInterfaceInfo
+
 CHDeclareClass(NetServiceInterfaceInfo)
 CHOptimizedClassMethod1(self, id, NetServiceInterfaceInfo, getResponseToRequest,id,arg1){
     id  obj =  CHSuper1(NetServiceInterfaceInfo, getResponseToRequest,arg1);
@@ -322,6 +310,7 @@ CHConstructor{
     CHClassHook1(NetServiceInterfaceInfo, getResponseToRequest);
 }
 
+#pragma mark - NetServiceInterfaceStartTask
 
 CHDeclareClass(NetServiceInterfaceStartTask)
 CHOptimizedClassMethod1(self, id, NetServiceInterfaceStartTask, getResponseToRequest,id,arg1){
@@ -335,6 +324,8 @@ CHConstructor{
     CHLoadLateClass(NetServiceInterfaceStartTask);
     CHClassHook1(NetServiceInterfaceStartTask, getResponseToRequest);
 }
+
+#pragma mark - HTTPSRequest
 
 CHDeclareClass(HTTPSRequest)
 CHOptimizedClassMethod1(self, id, HTTPSRequest, queryDictionaryOfURL,id,arg1){
@@ -354,6 +345,8 @@ CHConstructor{
  xyurl = "https://www.xiaoyuzhuanqian.com/api/auth/list";
  }
  */
+#pragma mark - NetServiceInterfaceURL
+
 CHDeclareClass(NetServiceInterfaceURL)
 CHOptimizedClassMethod1(self, id, NetServiceInterfaceURL, getResponseToRequest,id,arg1){
     id  obj =  CHSuper1(NetServiceInterfaceURL, getResponseToRequest,arg1);
@@ -366,7 +359,7 @@ CHConstructor{
     CHLoadLateClass(NetServiceInterfaceURL);
     CHClassHook1(NetServiceInterfaceURL, getResponseToRequest);
 }
-
+#pragma mark - TaskManager
 CHDeclareClass(TaskManager)
 CHOptimizedClassMethod1(self, void, TaskManager, taskComplete,id,arg1){
     CHSuper1(TaskManager, taskComplete,arg1);
@@ -377,7 +370,6 @@ CHOptimizedClassMethod0(self, void, TaskManager, succeedInOpeningApp){
     CHSuper0(TaskManager, succeedInOpeningApp);
     NSLog(@"succeedInOpeningApp=======");
 }
-
 
 CHConstructor{
     CHLoadLateClass(TaskManager);
@@ -402,8 +394,8 @@ CHOptimizedMethod1(self, BOOL, LSAW_model, openAppWithIdentifier,id ,arg1){
     SEL  selector = NSSelectorFromString(default_W);
     IMP imp = [v7 methodForSelector:selector];
     NSObject * (*func)(id, SEL) = (void *)imp;
-    NSObject  *_LSAW_model_instance =  func(v7, selector);
-    if(_LSAW_model_instance){
+    TaskBean  *task =  func(v7, selector);
+    if(task&& [task.bundleId isEqualToString:arg1]){
         return YES;
     }
     else{
